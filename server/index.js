@@ -14,10 +14,11 @@ const db = mysql.createPool({
 });
 
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api/fetchdata", (req, res) => {
 
-    db.query("SELECT * FROM activites ", (err, result) => {
+    db.query("SELECT MONTH(Date_debut) as start_month FROM activites ", (err, result) => {
         res.send(result);
     })
     
