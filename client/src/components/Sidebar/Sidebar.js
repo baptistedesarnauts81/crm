@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { push as Menu } from 'react-burger-menu'
 import "./Sidebar.css"
 
 class Sidebar extends Component {
@@ -10,18 +11,12 @@ class Sidebar extends Component {
     render() {
 
         return(
-
-            <div class="sidenav">
-                <h2>Projet CRM</h2>
-                <hr/>
-                <a href="http://localhost:3000/dashboard">Dashboard</a>
-                <a href="http://localhost:3000/adddata">Données</a>
-                <a href="http://localhost:3000">Contact</a>
-            </div>
-
-        )
-    };
-
+            <Menu>
+                <a id="home" className="menu-item" href="/dashboard">Home</a>
+                <a id="add_data" className="menu-item" href="/adddata">Add Data</a>
+                <a id="contact" className="menu-item" href="/contact">Contact</a>
+            </Menu>
+        );
+    }
 }
-
 export default Sidebar

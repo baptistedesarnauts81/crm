@@ -6,11 +6,10 @@ const bodyParser = require("body-parser")
 const mysql = require("mysql")
 
 const db = mysql.createPool({
-    host: "sql7.freemysqlhosting.net",
-    user: "sql7370957",
-    password: "28rH66bFPu",
-    database: "sql7370957",
-    port: "3306"
+    host: "sybilcz311.mysql.d",
+    user: "sybilcz311",
+    password: "sybilBDD13",
+    database: "sybilcz311"
 });
 
 app.use(bodyParser.urlencoded({extended: true}))

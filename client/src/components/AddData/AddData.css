@@ -1,8 +1,13 @@
-.main {
-    margin-left: 200px; /* Same as the width of the sidenav */
-  }
-
-h1{
-    text-align: center;
-    font-size: 50px;
-} 
+.btn-block{
+  font-size: 30px;
+  color: white;
+}
+.btn-block:hover{
+  color: white;
+}
+.card-header{
+  background-color:#3F7CF5;
+}
+#accordionExample{
+  margin: 70px;
+}

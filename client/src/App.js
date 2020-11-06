@@ -11,14 +11,11 @@ class App extends Component{
   render(){
     return(
       <BrowserRouter>
-        <Sidebar />
+        <Sidebar/>
           <Switch>
             <Route exact path="/adddata" component={AddData} />
             <Route exact path="/dashboard" component={Dashboard} />
           </Switch>
-        
-        
-      
       </BrowserRouter>
     )
   }
