@@ -1,14 +1,42 @@
 import React, { Component } from "react";
-import "./AddData.css"
+import "./AddData.css";
+import axios from "axios";
 
 class AddData extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            name : undefined,
+            fname : undefined,
+            type : undefined,
+            date_beg : undefined,
+            date_end : undefined,
+            price : undefined,
+            interested : undefined,
+            comm : undefined
+        };
     };
+    
+    submit_action = () =>{
+        const info = {
+            nom_premon : [this.state.name, this.state.fname].join(" "),
+            type : this.state.type,
+            date_debut : this.state.date_beg,
+            date_fin : this.state.date_end,
+            montant : this.state.price,
+            interet : this.state.interested,
+            commentaire : this.state.comm
+        };
+        axios.post("http://localhost:3001/insert_action", { info }).then(res=>{
+            alert(res)
+        });
+    }
 
 
     render(){
+        
+
         return(
             <div class = "container">
                 <h1 class="display-3">Ajouter des données</h1>
@@ -24,43 +52,75 @@ class AddData extends Component {
 
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="email">Mail client </label>
-                                        <input class="form-control form-control-sm" id="email"></input>
+                                <form >
+                                    <div class="form-group was-validated">
+                                        <label for="validationCustom01">Nom </label>
+                                        <input type="text" class="form-control form-control-sm" id="validationCustom01" required onChange={(e)=>{
+                                            this.setState({name : e.target.value})
+                                        }}></input>
+                                        <div class="invalid-feedback">Veuillez rentrer un nom</div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="type">Type d'activité </label>
-                                        <input class="form-control form-control-sm" id="type"></input>
+                                    <div class="form-group was-validated">
+                                        <label for="validationCustom02">Prenom </label>
+                                        <input type="text" class="form-control form-control-sm" id="validationCustom02" required onChange={(e)=>{
+                                            this.setState({fname : e.target.value})
+                                        }}></input>
+                                        <div class="invalid-feedback">Veuillez rentrer un prenom</div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="debut">Date de debut</label>
-                                        <input class="form-control form-control-sm" id="debut"></input>
-                                        <small id="adresseHelp" class="form-text text-muted">Format DD-MM-YYYY</small>
+                                    <div class="form-group was-validated">
+                                        <label for="validationCustom03">Type d'activité </label>
+                                        <select class="custom-select" id="validationDefault03" required onChange={(e)=>{
+                                            this.setState({ type : e.target.value})
+                                        }}>
+                                            <option selected disabled value="">Choisir</option>
+                                            <option value="prise de contact">prise de contact</option>
+                                            <option value="mission courte">mission courte</option>
+                                            <option value="mission longue">mission longue</option>
+                                            <option value="echange telephonique">echange telephonique</option>
+                                            <option value="pechange visio">echange visio</option>
+                                            <option value="demande ponctuelle">demande ponctuelle</option>
+                                        </select>
+                                        <div class="invalid-feedback">Veuillez choisir un Type</div>
+                                    </div>
+                                    <div class="form-group was-validated">
+                                        <label for="validationCustom04">Date de debut</label>
+                                        <input class="form-control form-control-sm" id="validationCustom02" required chonChange={(e)=>{
+                                            this.setState({date_beg : e.target.value})
+                                        }} pattern = "[0-9]{4}[ -][0-9]{2}[ -][0-9]{2}"></input>
+                                        <small id="adresseHelp" class="form-text text-muted">Format YYYY-MM-DD</small>
+                                        <div class="invalid-feedback">Veuillez rentrer une date de début</div>
                                     </div>
                                     <div class="form-group">
                                         <label for="fin">Date de fin</label>
-                                        <input class="form-control form-control-sm" id="fin"></input>
-                                        <small id="adresseHelp" class="form-text text-muted">Format DD-MM-YYYY</small>
+                                        <input class="form-control form-control-sm" id="fin" onChange={(e)=>{
+                                            this.setState({date_end : e.target.value})
+                                        }}></input>
+                                        <small id="adresseHelp" class="form-text text-muted">Format YYYY-MM-DD</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="prix">Montant du contract</label>
-                                        <input class="form-control form-control-sm" id="prix"></input>
+                                        <input class="form-control form-control-sm" id="prix" onChange={(e)=>{
+                                            this.setState({price : e.target.value})
+                                        }}></input>
                                     </div>
                                     <div class="form-group">
                                         <label for="interesse">Intéressé par d'autres missions</label>
-                                        <select class="custom-select" id="validationDefault04" required>
+                                        <select class="custom-select" id="validationDefault04" onChange={(e)=>{
+                                            this.setState({interested : e.target.value})
+                                        }}>
                                             <option selected disabled value="">Choisir</option>
-                                            <option>Oui</option>
-                                            <option>Non</option>
+                                            <option value = "TRUE">Oui</option>
+                                            <option value = "FALSE">Non</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="commentaire">Commentaire</label>
-                                        <input class="form-control form-control-sm" id="commentaire"></input>
+                                        <input class="form-control form-control-sm" id="commentaire" onChange={(e)=>{
+                                            this.setState({comm : e.target.value})
+                                        }}></input>
                                         <small id="commentaireHelp" class="form-text text-muted">Falcultatif</small>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    <button type="submit" class="btn btn-primary" onClick={this.submit_action}>Enregistrer</button>
                                 </form>
                             </div>
                         </div>
@@ -155,8 +215,6 @@ class AddData extends Component {
                     </div>
                     </div>
             </div>
-        
-
         )
     }
 };
