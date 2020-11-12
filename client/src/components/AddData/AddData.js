@@ -14,7 +14,10 @@ class AddData extends Component {
             date_end : undefined,
             price : undefined,
             interested : undefined,
-            comm : undefined
+            comm : undefined,
+            company : undefined,
+            mail : undefined, 
+            phone : undefined
         };
     };
     
@@ -53,21 +56,21 @@ class AddData extends Component {
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
                                 <form >
-                                    <div class="form-group was-validated">
+                                    <div class="form-group ">
                                         <label for="validationCustom01">Nom </label>
-                                        <input type="text" class="form-control form-control-sm" id="validationCustom01" required onChange={(e)=>{
-                                            this.setState({name : e.target.value})
+                                        <input type="email" class="form-control form-control-sm" id="validationCustom01" required onChange={(e)=>{
+                                            this.setState({name : e.target.value.toUpperCase()})
                                         }}></input>
                                         <div class="invalid-feedback">Veuillez rentrer un nom</div>
                                     </div>
-                                    <div class="form-group was-validated">
-                                        <label for="validationCustom02">Prenom </label>
+                                    <div class="form-group ">
+                                        <label for="validationCustom02">Prénom </label>
                                         <input type="text" class="form-control form-control-sm" id="validationCustom02" required onChange={(e)=>{
                                             this.setState({fname : e.target.value})
                                         }}></input>
                                         <div class="invalid-feedback">Veuillez rentrer un prenom</div>
                                     </div>
-                                    <div class="form-group was-validated">
+                                    <div class="form-group ">
                                         <label for="validationCustom03">Type d'activité </label>
                                         <select class="custom-select" id="validationDefault03" required onChange={(e)=>{
                                             this.setState({ type : e.target.value})
@@ -82,7 +85,7 @@ class AddData extends Component {
                                         </select>
                                         <div class="invalid-feedback">Veuillez choisir un Type</div>
                                     </div>
-                                    <div class="form-group was-validated">
+                                    <div class="form-group ">
                                         <label for="validationCustom04">Date de debut</label>
                                         <input class="form-control form-control-sm" id="validationCustom02" required chonChange={(e)=>{
                                             this.setState({date_beg : e.target.value})
@@ -94,7 +97,7 @@ class AddData extends Component {
                                         <label for="fin">Date de fin</label>
                                         <input class="form-control form-control-sm" id="fin" onChange={(e)=>{
                                             this.setState({date_end : e.target.value})
-                                        }}></input>
+                                        }} pattern = "[0-9]{4}[ -][0-9]{2}[ -][0-9]{2}"></input>
                                         <small id="adresseHelp" class="form-text text-muted">Format YYYY-MM-DD</small>
                                     </div>
                                     <div class="form-group">
@@ -136,38 +139,46 @@ class AddData extends Component {
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                             <div class="card-body">
                                 <form>
-                                    <div class="form-group">
-                                        <label for="nom">Nom</label>
-                                        <input class="form-control form-control-sm" id="nom"></input>
+                                    <div class="form-group was-validated">
+                                        <label for="validationCustom01">Nom</label>
+                                        <input class="form-control form-control-sm" id="validationCustom01" required onChange={(e)=>{
+                                            this.setState({name : e.target.value.toUpperCase() })
+                                        }}></input>
+                                        <div class="invalid-feedback">Veuillez entrer un nom</div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="prenom">Prenom</label>
-                                        <input class="form-control form-control-sm" id="prenom"></input>
+                                    <div class="form-group was-validated">
+                                        <label for="validationCustom02">Prénom</label>
+                                        <input class="form-control form-control-sm" id="validationCustom02" required onChange={(e)=>{
+                                            this.setState({fname : e.target.value })
+                                        }}></input>
+                                        <div class="invalid-feedback">Veuillez entrer un prénom</div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nom_societe">Nom de la société</label>
-                                        <input class="form-control form-control-sm" id="nom_societe"></input>
+                                    <div class="form-group was-validated">
+                                        <label for="validationCustom03">Nom de la société</label>
+                                        <input class="form-control form-control-sm" id="validationCustom03" required onChange={(e)=>{
+                                            this.setState({company : e.target.value })
+                                        }}></input>
+                                        <div class="invalid-feedback">Veuillez le nom de la société</div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="id_societe">ID de la societe</label>
-                                        <input class="form-control form-control-sm" id="id_societe"></input>
+                                    <div class="form-group was-validated">
+                                        <label for="validationCustom04">Email</label>
+                                        <input type="email" class="form-control form-control-sm" id="validationCustom04" required onChange={(e)=>{
+                                            this.setState({mail : e.target.value })
+                                        }}></input>
+                                        <div class="invalid-feedback">Veuillez renseigner l'email</div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input class="form-control form-control-sm" id="email"></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ntel">Numero de téléphone</label>
-                                        <input class="form-control form-control-sm" id="ntel"></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="adresse">Addresse</label>
-                                        <input class="form-control form-control-sm" id="adresse"></input>
-                                        <small id="adresseHelp" class="form-text text-muted">Falcultatif</small>
+                                    <div class="form-group was-validated">
+                                        <label for="validationCustom05">Numero de téléphone</label>
+                                        <input class="form-control form-control-sm" id="validationCustom05" required onChange={(e)=>{
+                                            this.setState({phone : e.target.value })
+                                        }}></input>
+                                        <div class="invalid-feedback">Veuillez entrer le numéro de téléphone</div>
                                     </div>
                                     <div class="form-group">
                                         <label for="commentaire">Commentaire</label>
-                                        <input class="form-control form-control-sm" id="commentaire"></input>
+                                        <input class="form-control form-control-sm" id="commentaire" onChange={(e)=>{
+                                            this.setState({comm : e.target.value })
+                                        }}></input>
                                         <small id="commentaireHelp" class="form-text text-muted">Falcultatif</small>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Enregistrer</button>

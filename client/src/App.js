@@ -14,7 +14,7 @@ class App extends Component{
         <Sidebar/>
           <Switch>
             <Route exact path="/adddata" component={AddData} />
-            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/" component={Dashboard} />
           </Switch>
       </BrowserRouter>
     )
