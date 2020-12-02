@@ -14,7 +14,7 @@ class Sidebar extends Component {
             <Menu>
                 <a id="home" className="menu-item" href="/">Home</a>
                 <a id="add_data" className="menu-item" href="/adddata">Add Data</a>
-                <a id="contact" className="menu-item" href="/contact">Contact</a>
+                <a id="data_manager" className="menu-item" href="/datamanager">Manage Data</a>
             </Menu>
         );
     }
