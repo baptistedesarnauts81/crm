@@ -6,9 +6,9 @@
 Afin d'utiliser l'application les deux outils suivants devront être installés, assurez vous de les avoir téléchargé avant de continuer l'installation :
 
 - [Node.JS](https://nodejs.org/en/download/)
-- [Git](https://git-scm.com/downloads)
+- (Optionnel)[Git](https://git-scm.com/downloads)
 
-Cloner ou téléchargez le répertoire [GitHub](https://github.com/baptistedesarnauts81/crm) dans un répertoire local.
+Cloner ou téléchargez le répertoire .zip [GitHub](https://github.com/baptistedesarnauts81/crm) en local.
 
 ### Installation des dépendances
 
@@ -49,13 +49,10 @@ Prenez soin de renseigner le mot de passe de votre instance mysql en lieu et pla
 /!\ /!\ /!\ Pensez à lancer votre serveur MySQL (cf BE1)
 /!\ /!\ /!\ Si votre instance MySQL n'a pas été créée avec les paramètres **host** et **user** localhost et root, prenez soin de les remplacer par leurs valeurs.
 
-Ces paramètres nous permettent de nous connecter à notre base de données locale.
-Nous allons maintenant nous y connecter et générer une base de données contenant quelques données.
-
-Pour ce faire, ouvrez un invité de commande, placez-vous au niveau du répertoire `crm/server/database` grâce à la commande :
+Ouvrez un invite de commande, placez-vous au niveau du répertoire `crm/server/database` grâce à la commande :
 
 ```
-cd chemin_d'accès_jusquà_crm/server/
+cd chemin_d'accès_jusqu'à_crm/server/
 ```
 
 et exécutez successivement les lignes de commande :
@@ -70,21 +67,21 @@ puis :
 node feed_database.js
 ```
 
-Une base de données MySQL portant le nom **mydb** est créée et contient les tables, les relations, et quelques données nécessaires à la manipulation de l'application.
+Une base de données MySQL portant le nom **crm_db** est créée et contient les tables, les relations, et quelques données nécessaires à la manipulation de l'application.
 
 ---
 
 ## Lancement local de l'application
 
-Afin de lancer en local la partie serveur de l'application, ouvrez un invité de commande, placez-vous au niveau du répertoire `crm/server` et exécutez la ligne de commande :
+Afin de lancer en local la partie serveur de l'application, ouvrez un invite de commande, placez-vous au niveau du répertoire `crm/server` et exécutez la ligne de commande :
 
 ```
 npm start
 ```
 
-Le serveur NodeJS se lance et écoute sur le port 3001.
+Le serveur NodeJS se lance sur le port 3001.
 
-Afin de lancer en local la partie front-end de l'application, ouvrez un invité de commande, placez-vous au niveau du répertoire `crm/client` et exécutez la ligne de commande :
+Afin de lancer en local la partie front-end de l'application, ouvrez un invite de commande, placez-vous au niveau du répertoire `crm/client` et exécutez la ligne de commande :
 
 ```
 npm start
