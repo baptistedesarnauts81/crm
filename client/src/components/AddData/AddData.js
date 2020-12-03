@@ -91,6 +91,7 @@ class AddData extends Component {
       no_contrat: this.state.no_contrat,
       nom_mission: this.state.nom_mission,
       nb_heures_attribuees: this.state.nb_heures_attribuees,
+      type: this.state.type,
       date_fin_prevue: this.state.date_fin_prevue,
       commentaire: this.state.commentaire,
     };
@@ -103,7 +104,7 @@ class AddData extends Component {
       mail: this.state.mail,
       date_saisie: this.state.date_saisie,
       nb_heures: this.state.nb_heures,
-      etat_avancement: this.etat_avancement,
+      etat_avancement: this.state.etat_avancement,
       commentaire: this.state.commentaire,
     };
     axios.post("http://localhost:3001/api/nouvelle_saisie", { info });
@@ -115,20 +116,9 @@ class AddData extends Component {
       mail: this.state.mail,
       experience: this.state.experience,
       charge_disponible: this.state.charge_disponible,
-      commentaire: this.state.type,
+      commentaire: this.state.commentaire,
     };
     axios.post("http://localhost:3001/api/nouveau_consultant", { info });
-  };
-
-  submit_societe = () => {
-    const info = {
-      nom: this.state.company,
-      siret: this.state.siret,
-      raison_sociale: this.state.raison_sociale,
-      adresse: this.state.adresse,
-      commentaire: this.state.comm,
-    };
-    axios.post("http://localhost:3001/insert_societe", { info });
   };
 
   get_clients = () => {
@@ -215,7 +205,7 @@ class AddData extends Component {
                   aria-expanded="true"
                   aria-controls="collapseOne"
                 >
-                  Nouvelle client
+                  Nouveau client
                 </button>
               </h2>
             </div>
@@ -373,9 +363,7 @@ class AddData extends Component {
                         this.setState({ email: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <div class="form-group">
                     <label for="validationCustom05">Numero de téléphone</label>
@@ -386,22 +374,17 @@ class AddData extends Component {
                         this.setState({ tel: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Commentaire</label>
+                    <label>Commentaire</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ commentaire: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <button
                     type="submit"
@@ -477,6 +460,9 @@ class AddData extends Component {
                       }}
                       pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
                     ></input>
+                    <small class="form-text text-muted">
+                      Format YYYY-MM-DD
+                    </small>
                   </div>
                   <div class="form-group">
                     <label for="validationCustom04">Date de livraison</label>
@@ -489,6 +475,9 @@ class AddData extends Component {
                       }}
                       pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
                     ></input>
+                    <small class="form-text text-muted">
+                      Format YYYY-MM-DD
+                    </small>
                   </div>
                   <div class="form-group">
                     <label for="validationCustom04">Montant</label>
@@ -515,17 +504,14 @@ class AddData extends Component {
                     ></input>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Commentaire</label>
+                    <label>Commentaire</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ commentaire: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <button
                     type="submit"
@@ -599,57 +585,48 @@ class AddData extends Component {
                     ></input>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Type</label>
+                    <label>Type</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ type: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Date de livraison</label>
+                    <label>Date de livraison</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ date_livraison: e.target.value });
                       }}
                       pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
+                    <small class="form-text text-muted">
+                      Format YYYY-MM-DD
                     </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Montant</label>
+                    <label>Montant</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ montant: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Commentaire</label>
+                    <label>Commentaire</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ commentaire: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <button
                     type="submit"
@@ -725,10 +702,9 @@ class AddData extends Component {
                     ></input>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Type</label>
+                    <label>Type</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       required
                       onChange={(e) => {
                         this.setState({ type: e.target.value });
@@ -736,33 +712,28 @@ class AddData extends Component {
                     ></input>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">
-                      Date prévisionnelle de fin de mission
-                    </label>
+                    <label>Date prévisionnelle de fin de mission</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ date_fin_prevue: e.target.value });
                       }}
                       pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
+                    <small class="form-text text-muted">
+                      Format YYYY-MM-DD
                     </small>
+                    <small class="form-text text-muted">Falcultatif</small>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Commentaire</label>
+                    <label>Commentaire</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ commentaire: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <button
                     type="submit"
@@ -865,52 +836,47 @@ class AddData extends Component {
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Date de la saisie</label>
+                    <label>Date de la saisie</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ date_saisie: e.target.value });
                       }}
                       pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
                     ></input>
+                    <small class="form-text text-muted">
+                      Format YYYY-MM-DD
+                    </small>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Nombre d'heures</label>
+                    <label>Nombre d'heures</label>
                     <input
                       type="number"
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ nb_heures: e.target.value });
                       }}
                     ></input>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Etat d'avancement</label>
+                    <label>Etat d'avancement</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ etat_avancement: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Commentaire</label>
+                    <label>Commentaire</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ commentaire: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <button
                     type="submit"
@@ -1002,22 +968,17 @@ class AddData extends Component {
                       }}
                     ></input>
 
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <div class="form-group">
-                    <label for="commentaire">Commentaire</label>
+                    <label>Commentaire</label>
                     <input
                       class="form-control form-control-sm"
-                      id="commentaire"
                       onChange={(e) => {
                         this.setState({ commentaire: e.target.value });
                       }}
                     ></input>
-                    <small id="commentaireHelp" class="form-text text-muted">
-                      Falcultatif
-                    </small>
+                    <small class="form-text text-muted">Facultatif</small>
                   </div>
                   <button
                     type="submit"

@@ -23,7 +23,7 @@ app.use(express.json());
 app.post("/api/nouveau_client", (req, res) => {
   const nom_societe = req.body.info.nom_societe;
   const siret = req.body.info.siret;
-  const adresse = req.body.info.adresse;
+  const adresse = req.body.info.adresse_societe;
   const commentaire = req.body.info.commentaire;
   console.log(nom_societe, siret, adresse, commentaire);
   const sql_query =
